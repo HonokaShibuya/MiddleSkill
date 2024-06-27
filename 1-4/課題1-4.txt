@@ -16,7 +16,7 @@ Eclipse：無料の統合開発環境
 
 ③ Javaを開発するための統合開発環境（IDE）は何ですか？
 
-テキストエディタ、コンパイラ、リンカ、デバッガなど開発に必要なソフトを１つにまとめた開発環境。
+Eclipse, Android Studio, Pleiades All in One
 
 
 ④Eclipseを導入する際に確かめるbit（ビット）にはどのような違いがありますか？
