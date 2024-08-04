@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-08-04T09:28:55.121566100Z</date>
+  <millis>1722763735121</millis>
+  <nanos>566100</nanos>
+  <sequence>0</sequence>
+  <logger>middleskill log</logger>
+  <level>INFO</level>
+  <class>Test1</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>ミドルスキルログが発生しました。</message>
+</record>
+</log>
