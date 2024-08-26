@@ -1,0 +1,116 @@
+【顧客情報テーブル】
+〇DDL文
+CREATE TABLE customers( 
+    customer_id SERIAL PRIMARY KEY
+    , name VARCHAR (255) NOT NULL
+    , email VARCHAR (255) NOT NULL
+    , phone VARCHAR (255)
+); 
+
+COMMENT ON COLUMN customers.customer_id IS '顧客ID'; 
+
+COMMENT ON COLUMN customers.name IS '顧客名'; 
+
+COMMENT ON COLUMN customers.email IS 'メールアドレス'; 
+
+COMMENT ON COLUMN customers.phone IS '電話番号'; 
+
+
+COMMENT ON TABLE customers IS '顧客情報テーブル';
+
+
+〇DML文
+INSERT INTO customers (customer_id, name, email, phone)
+VALUES
+('1', '山田太郎', 'yamada@example.com', '012-3456-7890'),
+('2', '田中花子', 'tanaka@example.com', '090-1234-5678'),
+('3', '鈴木次郎', 'suzuki@example.com', '080-8765-4321');
+
+
+
+【注文情報テーブル】
+〇DDL文
+CREATE TABLE orders (
+  order_id INT NOT NULL,
+  customer_id INT NOT NULL,
+  order_date DATE NOT NULL,
+  total DECIMAL(10,2),
+  PRIMARY KEY(order_id),
+  FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+);
+
+COMMENT ON COLUMN orders.order_id IS '注文ID';
+COMMENT ON COLUMN orders.customer_id IS '顧客ID';
+COMMENT ON COLUMN orders.order_date IS '注文日';
+COMMENT ON COLUMN orders.total IS '合計金額';
+
+COMMENT ON TABLE orders IS '注文情報テーブル';
+
+
+〇DML文
+INSERT INTO orders (order_id, customer_id, order_date, total)
+VALUES
+(1, 1, '2022/1/1', 160000.00),
+(2, 1, '2022/2/1', 240000.00),
+(3, 2, '2022/3/1', 120000.00),
+(4, 3, '2022/4/1', 100000.00);
+
+
+
+【製品情報テーブル】
+〇DDL文
+CREATE TABLE products (
+  product_id INT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  cotegory VARCHAR(255),
+  PRIMARY KEY(product_id)
+);
+
+COMMENT ON COLUMN products.order_id IS '製品ID';
+COMMENT ON COLUMN products.customer_id IS '製品名';
+COMMENT ON COLUMN products.order_date IS '価格';
+COMMENT ON COLUMN products.total IS 'カテゴリ';
+
+COMMENT ON TABLE products IS '製品情報テーブル';
+
+〇DML文
+INSERT INTO products (product_id, name, price, cotegory)
+VALUES
+(1, 'iPhone12', 80000.00, 'スマートフォン'),
+(2, 'iPad Pro', 120000.00, 'タブレット'),
+(3, 'Mac Book Pro', 200000.00, 'パソコン'),
+(4, 'エアコン', 50000.00, '家電'),
+(5, 'テレビ', 100000.00, '家電');
+
+
+
+【注文アイテムテーブル】
+〇DDL文
+CREATE TABLE order_items (
+  order_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quanity INT NOT NULL,
+  price DECIMAL(10,2),
+  PRIMARY KEY(order_id,product_id),
+  FOREIGN KEY(order_id) REFERENCES orders(order_id),
+  FOREIGN KEY(product_id) REFERENCES products(product_id)
+);
+
+COMMENT ON COLUMN order_items.order_id IS '注文ID';
+COMMENT ON COLUMN order_items.product_id IS '製品ID';
+COMMENT ON COLUMN order_items.quanity IS '数量';
+COMMENT ON COLUMN order_items.price IS '価格';
+
+COMMENT ON TABLE order_items IS '注文アイテムテーブル';
+
+
+〇DML文
+INSERT INTO order_items (order_id, product_id, quanity, price)
+VALUES
+(1, 1, 2, 80000.00),
+(2, 3, 1, 200000.00),
+(2, 4, 1, 50000.00),
+(2, 5, 2, 200000.00),
+(3, 2, 1, 120000.00),
+(4, 4, 2, 100000.00);
