@@ -19,5 +19,5 @@ Serviceクラスは「インターフェース」と「実装クラス」の2種
 
 ④何らかのロジカル的な処理を行うプログラミングをしようとする時、コーディングするのに正しいのはどれになりますか？(controller、service、view、seviceimpl、entity、dao、daoimpl)
 
-service
+dao
 
