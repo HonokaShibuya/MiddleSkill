@@ -1,0 +1,20 @@
+.cp_iptxt {
+  position: relative;
+  width: 100%;
+  margin: 40px 0;
+}
+.cp_iptxt input[type='text'] {
+  font: 15px/1.6 sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em;
+  color: #aaaaaa;
+  border: 1px solid #1b2538;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+.ef input[type='text']:focus {
+  border: 1px solid #da3c41;
+  box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+  outline: none;
+}
